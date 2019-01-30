@@ -6,13 +6,17 @@ import java.util.Scanner;
 import com.livetechstudy.library.dao.BookDao;
 import com.livetechstudy.library.dao.BookDaoImpl;
 import com.livetechstudy.library.model.Book;
-
-
+import com.livetechstudy.library.util.LibraryConstants;
 
 public class LibraryMain {
 	private static Scanner s = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		if (System.getProperty(LibraryConstants.DB_PROPERTIES) == null) {
+			System.out.println("Please pass VM argument -D" + LibraryConstants.DB_PROPERTIES);
+			System.exit(-1);
+		}
+
 		System.out.println("*************************************************************");
 		System.out.println("         Welcome to Library Management System");
 		System.out.println("*************************************************************");
